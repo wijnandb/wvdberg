@@ -299,7 +299,7 @@ ul {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--color-primary) url('/images/hero.jpg') center / cover no-repeat;
+  background: var(--color-primary) url('../images/hero.jpg') center / cover no-repeat;
   color: var(--color-white);
   padding: 120px 0 80px;
 }
