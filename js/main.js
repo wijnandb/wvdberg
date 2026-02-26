@@ -181,7 +181,8 @@
       naam: form.querySelector('[name="naam"]').value.trim(),
       telefoon: form.querySelector('[name="telefoon"]').value.trim(),
       email: form.querySelector('[name="email"]').value.trim(),
-      bericht: form.querySelector('[name="bericht"]').value.trim()
+      bericht: form.querySelector('[name="bericht"]').value.trim(),
+      website: form.querySelector('[name="website"]').value
     };
 
     fetch('/api/contact', {
