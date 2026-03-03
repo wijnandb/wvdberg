@@ -114,6 +114,9 @@
   var form = document.getElementById('contactForm');
   var formStatus = document.getElementById('formStatus');
 
+  // Record page load time for spam detection
+  form.dataset.ts = String(Date.now());
+
   function showError(fieldName, message) {
     var input = form.querySelector('[name="' + fieldName + '"]');
     var errorEl = form.querySelector('[data-for="' + fieldName + '"]');
@@ -182,10 +185,13 @@
       telefoon: form.querySelector('[name="telefoon"]').value.trim(),
       email: form.querySelector('[name="email"]').value.trim(),
       bericht: form.querySelector('[name="bericht"]').value.trim(),
-      website: form.querySelector('[name="website"]').value
+      _gotcha: form.querySelector('[name="website"]').value,
+      _ts: form.dataset.ts || ''
     };
 
-    fetch('/api/contact', {
+    // Formbridge public submission endpoint
+    var FORMBRIDGE_URL = 'https://forms.bollenstreekdigitaal.nl/api/v1/s/f_bc20d12e8833';
+    fetch(FORMBRIDGE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
