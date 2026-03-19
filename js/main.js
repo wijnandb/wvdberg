@@ -10,12 +10,18 @@
   const header = document.getElementById('header');
   const scrollThreshold = 60;
 
+  var headerTicking = false;
   function updateHeader() {
-    if (window.scrollY > scrollThreshold) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    if (headerTicking) return;
+    headerTicking = true;
+    requestAnimationFrame(function () {
+      if (window.scrollY > scrollThreshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      headerTicking = false;
+    });
   }
 
   window.addEventListener('scroll', updateHeader, { passive: true });
@@ -258,14 +264,20 @@
   var mobileCta = document.getElementById('mobileCta');
   if (mobileCta) {
     var heroSection = document.getElementById('hero');
+    var ctaTicking = false;
     function updateMobileCta() {
-      if (window.innerWidth >= 1024) return;
-      var heroBottom = heroSection.getBoundingClientRect().bottom;
-      if (heroBottom < 0) {
-        mobileCta.classList.add('visible');
-      } else {
-        mobileCta.classList.remove('visible');
-      }
+      if (ctaTicking) return;
+      ctaTicking = true;
+      requestAnimationFrame(function () {
+        if (window.innerWidth >= 1024) { ctaTicking = false; return; }
+        var heroBottom = heroSection.getBoundingClientRect().bottom;
+        if (heroBottom < 0) {
+          mobileCta.classList.add('visible');
+        } else {
+          mobileCta.classList.remove('visible');
+        }
+        ctaTicking = false;
+      });
     }
     window.addEventListener('scroll', updateMobileCta, { passive: true });
     updateMobileCta();
