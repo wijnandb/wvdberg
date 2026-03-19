@@ -894,3 +894,73 @@ ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ============================================
+   Mobile Sticky CTA Bar
+   ============================================ */
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  background: var(--color-white);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+  padding: 8px;
+  gap: 8px;
+}
+
+.mobile-cta.visible {
+  display: flex;
+}
+
+.mobile-cta-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.mobile-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.mobile-cta-call {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.mobile-cta-call:hover {
+  color: var(--color-white);
+}
+
+.mobile-cta-whatsapp {
+  background: #25d366;
+  color: var(--color-white);
+}
+
+.mobile-cta-whatsapp:hover {
+  color: var(--color-white);
+}
+
+/* Only show on mobile */
+@media (min-width: 1024px) {
+  .mobile-cta {
+    display: none !important;
+  }
+}
+
+/* Add padding to footer so CTA bar doesn't overlap content on mobile */
+@media (max-width: 1023px) {
+  .site-footer {
+    padding-bottom: 80px;
+  }
+}

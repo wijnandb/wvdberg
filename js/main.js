@@ -234,4 +234,21 @@
     }
   });
 
+  // --- Mobile Sticky CTA ---
+  var mobileCta = document.getElementById('mobileCta');
+  if (mobileCta) {
+    var heroSection = document.getElementById('hero');
+    function updateMobileCta() {
+      if (window.innerWidth >= 1024) return;
+      var heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        mobileCta.classList.add('visible');
+      } else {
+        mobileCta.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', updateMobileCta, { passive: true });
+    updateMobileCta();
+  }
+
 })();
