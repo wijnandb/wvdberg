@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wvdberg.com/sitemap.xml
+Sitemap: https://wvdbergtotaalonderhoud.nl/sitemap.xml
